@@ -2,61 +2,6 @@
 
 Backend API for Money Manager Application built with Spring Boot and MongoDB.
 
-## Prerequisites
-
-- Java 17 or higher
-- Maven 3.6+
-- MongoDB Atlas account (or local MongoDB)
-
-## Setup Instructions
-
-### 1. Clone the Repository
-
-```bash
-git clone <your-repo-url>
-cd money-manager-backend
-```
-
-### 2. Configure MongoDB Atlas
-
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a free cluster
-3. Create a database user
-4. Whitelist your IP address (or use 0.0.0.0/0 for development)
-5. Get your connection string
-
-### 3. Update application.properties
-
-Edit `src/main/resources/application.properties`:
-
-```properties
-spring.data.mongodb.uri=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/moneymanager?retryWrites=true&w=majority
-```
-
-Replace `<username>`, `<password>`, and cluster URL with your MongoDB Atlas credentials.
-
-### 4. Build the Project
-
-```bash
-mvn clean install
-```
-
-### 5. Run the Application
-
-```bash
-mvn spring-boot:run
-```
-
-The server will start on `http://localhost:8080`
-
-### 6. Initialize Default Categories
-
-Make a POST request to:
-```
-POST http://localhost:8080/api/categories/initialize
-```
-
-This will create default income and expense categories.
 
 ## API Endpoints
 
@@ -190,43 +135,7 @@ Error responses:
 4. **Transaction Types**: INCOME or EXPENSE
 5. **Divisions**: OFFICE or PERSONAL
 
-## Testing with Postman
 
-1. Import the API endpoints into Postman
-2. Initialize categories first: `POST /api/categories/initialize`
-3. Create some accounts: `POST /api/accounts`
-4. Create transactions: `POST /api/transactions`
-5. Test dashboard APIs to see summaries
-
-## Deployment
-
-### Deploy to Render
-
-1. Create account on [Render](https://render.com)
-2. Create new Web Service
-3. Connect your GitHub repository
-4. Set build command: `mvn clean install`
-5. Set start command: `java -jar target/money-manager-backend-1.0.0.jar`
-6. Add environment variables:
-   - `SPRING_DATA_MONGODB_URI`
-   - `CORS_ALLOWED_ORIGINS`
-7. Deploy!
-
-### Deploy to Railway
-
-1. Create account on [Railway](https://railway.app)
-2. Create new project from GitHub repo
-3. Railway will auto-detect Spring Boot
-4. Add environment variables
-5. Deploy!
-
-## Environment Variables for Production
-
-```
-SPRING_DATA_MONGODB_URI=your_mongodb_atlas_uri
-CORS_ALLOWED_ORIGINS=https://your-frontend-domain.com
-SERVER_PORT=8080
-```
 
 ## Project Structure
 
@@ -253,6 +162,3 @@ src/
 - Lombok
 - Maven
 
-## License
-
-Open source for hackathon project.
